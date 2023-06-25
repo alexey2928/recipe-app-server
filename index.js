@@ -5,7 +5,7 @@ const PORT =
 	process.env.PORT ||
 	"https://recipe-app-openai-alexk-3c434bd118e0.herokuapp.com/api";
 require("dotenv").config();
-
+app.set("timeout", 300000);
 const path = require("path");
 const axios = require(axios);
 app.use(express.json());
@@ -62,9 +62,10 @@ app.post("/api/chatgpt", async (req, res) => {
 		}),
 	};
 	try {
-		const response = await axios
-			.post("https://api.openai.com/v1/chat/completions", options)
-			.then((r) => r.json());
+		const response = await fetch(
+			"https://api.openai.com/v1/chat/completions",
+			options
+		).then((r) => r.json());
 
 		console.log(`GPT Results: ${JSON.stringify(response)}}`);
 
@@ -101,9 +102,10 @@ app.post("/api/image", async (req, res) => {
 		}),
 	};
 	try {
-		const response = await axios
-			.post("https://api.openai.com/v1/images/generations", options)
-			.then((r) => r.json());
+		const response = await fetch(
+			"https://api.openai.com/v1/images/generations",
+			options
+		).then((r) => r.json());
 		// console.log(req.body.dish_name.map((dish) => dish));
 		// console.log(`IMAGE Results: ${JSON.stringify(response)}`);
 
