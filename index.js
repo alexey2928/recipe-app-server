@@ -7,7 +7,7 @@ const PORT =
 require("dotenv").config();
 
 const path = require("path");
-
+const axios = require(axios);
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname + "/public")));
@@ -62,10 +62,9 @@ app.post("/api/chatgpt", async (req, res) => {
 		}),
 	};
 	try {
-		const response = await fetch(
-			"https://api.openai.com/v1/chat/completions",
-			options
-		).then((r) => r.json());
+		const response = await axios
+			.post("https://api.openai.com/v1/chat/completions", options)
+			.then((r) => r.json());
 
 		console.log(`GPT Results: ${JSON.stringify(response)}}`);
 
@@ -102,10 +101,9 @@ app.post("/api/image", async (req, res) => {
 		}),
 	};
 	try {
-		const response = await fetch(
-			"https://api.openai.com/v1/images/generations",
-			options
-		).then((r) => r.json());
+		const response = await axios
+			.post("https://api.openai.com/v1/images/generations", options)
+			.then((r) => r.json());
 		// console.log(req.body.dish_name.map((dish) => dish));
 		// console.log(`IMAGE Results: ${JSON.stringify(response)}`);
 
