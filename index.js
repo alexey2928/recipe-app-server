@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const PORT = process.env.PORT || 5000;
+const PORT =
+	process.env.PORT ||
+	"https://recipe-app-openai-alexk-3c434bd118e0.herokuapp.com/api";
 require("dotenv").config();
 
 const path = require("path");
