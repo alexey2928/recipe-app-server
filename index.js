@@ -5,7 +5,7 @@ const PORT =
 	process.env.PORT ||
 	"https://recipe-app-openai-alexk-3c434bd118e0.herokuapp.com/api";
 require("dotenv").config();
-app.set("timeout", 300000);
+
 const path = require("path");
 const axios = require(axios);
 app.use(express.json());
