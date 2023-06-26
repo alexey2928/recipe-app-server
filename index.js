@@ -1,13 +1,11 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const PORT =
-	process.env.PORT ||
-	"https://recipe-app-openai-alexk-3c434bd118e0.herokuapp.com/api";
+const PORT = process.env.PORT || 5000;
 require("dotenv").config();
 
 const path = require("path");
-const axios = require(axios);
+
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname + "/public")));
