@@ -125,4 +125,7 @@ app.post("/api/image", async (req, res) => {
 	}
 });
 
-app.listen(PORT, () => console.log("This server is running on port " + PORT));
+const server = app.listen(PORT, () => {
+	console.log("This server is running on port " + PORT);
+});
+server.timeout = 60000;
