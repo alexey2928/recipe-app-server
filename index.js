@@ -9,15 +9,6 @@ const path = require("path");
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname + "/public")));
-app.use((req, res, next) => {
-	res.setHeader(
-		"Access-Control-Allow-Origin",
-		"https://recipe-app-openai-alexk-e21c28a88130.herokuapp.com"
-	);
-	res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-	res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-	next();
-});
 
 const DISH_ATTRIBUTES = {
 	dish_name: " ",
@@ -125,7 +116,6 @@ app.post("/api/image", async (req, res) => {
 	}
 });
 
-const server = app.listen(PORT, () => {
+app.listen(PORT, () => {
 	console.log("This server is running on port " + PORT);
 });
-server.timeout = 60000;
