@@ -8,7 +8,7 @@ const path = require("path");
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static(path.join(__dirname + "/public")));
+// app.use(express.static(path.join(__dirname + "/public")));
 
 const DISH_ATTRIBUTES = {
 	dish_name: " ",
@@ -67,7 +67,7 @@ app.post("/api/chatgpt", async (req, res) => {
 
 		console.log(`GPT Results: ${JSON.stringify(response)}}`);
 
-		const attributes = JSON.parse(response.choices[0].message.content);
+		const attributes = await JSON.parse(response.choices[0].message.content);
 
 		res.status(200).json(attributes);
 	} catch (error) {
